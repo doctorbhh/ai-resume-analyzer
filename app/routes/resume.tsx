@@ -4,7 +4,7 @@ import { usePuterStore } from "~/lib/puter";
 import Summary from "~/components/Summary";
 import ATS from "~/components/ATS";
 import Details from "~/components/Details";
-
+import Button from "~/components/BackBtn";
 export const meta = () => [
   { title: "Resanalyzer| Review " },
   { name: "description", content: "Detailed overview of your resume" },
@@ -54,14 +54,7 @@ const Resume = () => {
     <main className="!pt-0">
       <nav className="resume-nav">
         <Link to="/" className="back-button">
-          <img
-            src="/icons/back.svg"
-            alt="logo"
-            className="w-2.5 h-2.5 bg-white"
-          />
-          <span className="text-white text-sm font-semibold">
-            Back to Homepage
-          </span>
+          <Button>Back to Homepage</Button>
         </Link>
       </nav>
       <div className="flex flex-row w-full max-lg:flex-col-reverse">

@@ -141,10 +141,9 @@ form {
     #4a044ecc
   ); /* slate-900 to dark-purple */
 }
-
 /* Changed: via-[#000000] -> via-[#FFFFFF] to be visible on dark bg */
 @utility text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#FFFFFF] to-[#8E97C5];
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#8993fd] to-[#8E97C5];
 }
 
 /* This now correctly uses the dark-blue theme variables */

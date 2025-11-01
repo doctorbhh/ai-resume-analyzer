@@ -1,64 +1,37 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { usePuterStore } from "~/lib/puter";
+import Navbar from "~/components/Navbar";
+import Card from "~/components/Glasscard";
 
 const WipeApp = () => {
-    const { auth, isLoading, error, clearError, fs, ai, kv } = usePuterStore();
-    const navigate = useNavigate();
-    const [files, setFiles] = useState<FSItem[]>([]);
+  const [isMounted, setIsMounted] = useState(false); // state for safe rendering
 
-    const loadFiles = async () => {
-        const files = (await fs.readDir("./")) as FSItem[];
-        setFiles(files);
-    };
+  useEffect(() => {
+    // wait until client hydration completes
+    setIsMounted(true);
+  }, []);
 
-    useEffect(() => {
-        loadFiles();
-    }, []);
-
-    useEffect(() => {
-        if (!isLoading && !auth.isAuthenticated) {
-            navigate("/auth?next=/wipe");
-        }
-    }, [isLoading]);
-
-    const handleDelete = async () => {
-        files.forEach(async (file) => {
-            await fs.delete(file.path);
-        });
-        await kv.flush();
-        loadFiles();
-    };
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Error {error}</div>;
-    }
-
+  if (!isMounted) {
+    // optionally show a loading or skeleton while waiting
     return (
-        <div>
-            Authenticated as: {auth.user?.username}
-            <div>Existing files:</div>
-            <div className="flex flex-col gap-4">
-                {files.map((file) => (
-                    <div key={file.id} className="flex flex-row gap-4">
-                        <p>{file.name}</p>
-                    </div>
-                ))}
-            </div>
-            <div>
-                <button
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer"
-                    onClick={() => handleDelete()}
-                >
-                    Wipe App Data
-                </button>
-            </div>
+      <div className="p-10">
+        <Navbar />
+        <div className="flex items-center justify-center text-gray-500 mt-10">
+          Loading...
         </div>
+      </div>
     );
+  }
+
+  return (
+    <div className="p-10">
+      <Navbar />
+      <div>
+        <Card />
+      </div>
+    </div>
+  );
 };
 
 export default WipeApp;
