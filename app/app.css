@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: "Mona Sans", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Changed: Updated light text color and transparent blues for dark mode */
+  --color-dark-200: #d1d5db; /* Was a dark gray, now a light gray (gray-300) for secondary text */
+  --color-light-blue-100: #1e3a8a33; /* Dark blue w/ 20% opacity */
+  --color-light-blue-200: #1e3a8a66; /* Dark blue w/ 40% opacity */
+
+  /* Changed: Inverted badge colors to be dark-bg with light-text */
+  --color-badge-green: #064e3b; /* Dark Green bg (green-900) */
+  --color-badge-red: #7f1d1d; /* Dark Red bg (red-900) */
+  --color-badge-yellow: #78350f; /* Dark Yellow/Amber bg (amber-900) */
+
+  --color-badge-green-text: #d1fae5; /* Light Green text (green-100) */
+  --color-badge-red-text: #fee2e2; /* Light Red text (red-100) */
+  --color-badge-yellow-text: #fef3c7; /* Light Yellow/Amber text (amber-100) */
+}
+
+/* Changed: Set base background to black and default text to light */
+html,
+body {
+  @apply bg-gradient-to-r from-slate-900 to-slate-700 text-gray-100;
+}
+
+main {
+  @apply min-h-screen pt-10;
+}
+h1 {
+  @apply max-sm:text-[3rem] text-6xl text-gradient leading-tight xl:tracking-[-2px] font-semibold;
+}
+
+h2 {
+  @apply max-sm:text-xl text-3xl text-dark-200; /* Uses the new --color-dark-200 var */
+}
+
+label {
+  @apply text-dark-200; /* Uses the new --color-dark-200 var */
+}
+
+/* Changed: Inputs are now dark with light text and a border */
+input {
+  @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-gray-900 text-white border border-gray-700;
+}
+
+/* Changed: Textareas are now dark with light text and a border */
+textarea {
+  @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-gray-900 text-white border border-gray-700;
+}
+
+form {
+  @apply flex flex-col items-start gap-8 w-full;
+}
+
+@layer components {
+  .text-gradient {
+    /* The utility @apply handles this, which we fixed below */
+    @apply text-gradient;
+  }
+  .gradient-border {
+    /* Uses the new dark-blue theme variables */
+    @apply bg-gradient-to-b from-light-blue-100 to-light-blue-200 p-4 rounded-2xl;
+  }
+  .primary-button {
+    @apply primary-gradient text-white rounded-full px-4 py-2 cursor-pointer w-full;
+  }
+  .resume-nav {
+    /* Changed: border-gray-200 -> border-gray-800 */
+    @apply flex flex-row justify-between items-center p-4 border-b border-gray-800;
+  }
+  .resume-summary {
+    @apply flex flex-row items-center justify-center p-4 gap-4;
+    .category {
+      /* Changed: bg-gray-50 -> bg-gray-900 */
+      @apply flex flex-row gap-2 items-center bg-gray-900 rounded-2xl p-4 w-full justify-between;
+    }
+  }
+  .back-button {
+    /* Changed: border-gray-200 -> border-gray-700 */
+    @apply flex flex-row items-center gap-2 border border-gray-700 rounded-lg p-2 shadow-sm;
+  }
+  .auth-button {
+    @apply primary-gradient rounded-full py-4 px-8 cursor-pointer w-[600px] max-md:w-full text-3xl font-semibold text-white;
+  }
+  .main-section {
+    @apply flex flex-col items-center gap-8 pt-12 max-sm:mx-2 mx-15 pb-5;
+  }
+  .page-heading {
+    @apply flex flex-col items-center gap-8 max-w-4xl text-center max-sm:gap-4;
+  }
+  .resumes-section {
+    @apply flex flex-wrap max-md:flex-col max-md:gap-4 gap-6 items-start max-md:items-center w-full max-w-[1850px] justify-evenly;
+  }
+
+  .resume-card {
+    /* Changed: bg-white -> bg-gray-900, added border */
+    @apply flex flex-col gap-8 h-[560px] w-[350px] lg:w-[430px] xl:w-[490px] bg-gray-900 border border-white rounded-2xl p-4;
+  }
+
+  .resume-card-header {
+    @apply flex flex-row gap-2 justify-between min-h-[110px] max-sm:flex-col items-center max-md:justify-center max-md:items-center;
+  }
+
+  .feedback-section {
+    @apply flex flex-col gap-8 w-1/2 px-8 max-lg:w-full py-6;
+  }
+
+  .navbar {
+    /* Changed: bg-white -> bg-gray-900, added border */
+    @apply flex flex-row justify-between items-center bg-gray-900 border border-gray-800 rounded-full p-4 w-full px-10 max-w-[1200px] mx-auto;
+  }
+
+  .score-badge {
+    /* Uses the new badge theme variables automatically */
+    @apply flex flex-row items-center justify-center py-1 px-2 gap-4 rounded-[96px];
+  }
+
+  .form-div {
+    @apply flex flex-col gap-2 w-full items-start;
+  }
+
+  .uplader-drag-area {
+    /* Changed: bg-white -> bg-gray-900, added visible dropzone borders */
+    @apply relative p-8 text-center transition-all duration-700 cursor-pointer bg-gray-900 border-2 border-dashed border-gray-700 hover:border-gray-500 rounded-2xl min-h-[208px];
+  }
+  .uploader-selected-file {
+    /* Changed: bg-gray-50 -> bg-gray-800 */
+    @apply flex items-center justify-between p-3 bg-gray-800 rounded-2xl;
+  }
+}
+
+/* Changed: Light bg gradient -> Dark bg gradient */
+@utility bg-gradient {
+  background: linear-gradient(
+    to bottom,
+    #0f172a 60%,
+    #4a044ecc
+  ); /* slate-900 to dark-purple */
+}
+
+/* Changed: via-[#000000] -> via-[#FFFFFF] to be visible on dark bg */
+@utility text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#FFFFFF] to-[#8E97C5];
+}
+
+/* This now correctly uses the dark-blue theme variables */
+@utility gradient-hover {
+  @apply bg-gradient-to-b from-light-blue-100 to-light-blue-200;
+}
+
+@utility primary-gradient {
+  background: linear-gradient(to bottom, #8e98ff, #606beb);
+  box-shadow: 0px 74px 21px 0px #6678ef00;
+}
+
+@utility primary-gradient-hover {
+  background: linear-gradient(to bottom, #717dff, #4957eb);
+}
+
+/* This blue inset shadow still looks good on dark inputs */
+@utility inset-shadow {
+  box-shadow: inset 0 0 12px 0 rgba(36, 99, 235, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
