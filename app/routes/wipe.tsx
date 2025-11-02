@@ -4,6 +4,12 @@ import { usePuterStore } from "~/lib/puter";
 import Navbar from "~/components/Navbar";
 import Card from "~/components/Glasscard";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Resanalyzer" },
+    { name: "description", content: "Smart feedback for your dream job!" },
+  ];
+}
 const WipeApp = () => {
   const [isMounted, setIsMounted] = useState(false); // state for safe rendering
 
