@@ -566,7 +566,7 @@ export const Icon2 = () => {
   return (
     <StyledWrapper>
       <div className="light-button2">
-        <a href="https://linkedin.com">
+        <a href="https://www.linkedin.com/in/bharath-s-649506323/">
           <button className="bt2">
             <div className="light-holder2">
               <div className="dot2" />
@@ -589,7 +589,7 @@ export const Icon3 = () => {
   return (
     <StyledWrapper>
       <div className="light-button3">
-        <a href="https://github.com">
+        <a href="https://github.com/doctorbhh">
           <button className="bt3">
             <div className="light-holder3">
               <div className="dot3" />
