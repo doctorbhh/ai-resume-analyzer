@@ -4,6 +4,11 @@ import { usePuterStore } from "~/lib/puter";
 import Navbar from "~/components/Navbar";
 import Card from "~/components/Glasscard";
 
+export const meta = () => [
+  { title: "Resumind | Wipe" },
+  { name: "description", content: "Wipe your data" },
+];
+
 const WipeApp = () => {
   const [isMounted, setIsMounted] = useState(false); // state for safe rendering
 
