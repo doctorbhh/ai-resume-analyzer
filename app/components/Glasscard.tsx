@@ -111,7 +111,7 @@ const StyledWrapper = styled.div`
   .back {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 80%;
     border-radius: 18px;
     backface-visibility: hidden;
     background: linear-gradient(135deg, #2a394f, #121b30);
