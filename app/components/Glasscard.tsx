@@ -85,17 +85,22 @@ const StyledWrapper = styled.div`
   font-family: "Poppins", sans-serif;
 
   .card {
-    width: 420px;
-    height: 320px;
+    width: 90%;
+    max-width: 420px;
+    height: 70vh; /* Dynamically fills most of the viewport */
+    min-height: 360px; /* Ensures good content space on small screens */
+    max-height: 600px;
     perspective: 1000px;
+    margin: 1rem auto; /* Centered on mobile screens */
   }
 
   .content {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 1s;
+    transition: transform 0.6s ease;
     transform-style: preserve-3d;
+    cursor: pointer;
   }
 
   .card:hover .content {
@@ -109,14 +114,14 @@ const StyledWrapper = styled.div`
     height: 100%;
     border-radius: 18px;
     backface-visibility: hidden;
-    background: rgba(255, 255, 255, 0.15);
+    background: linear-gradient(135deg, #2a394f, #121b30);
     backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.25);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2em;
+    padding: 2rem 1.5rem;
     color: #fff;
   }
 
@@ -199,11 +204,33 @@ const StyledWrapper = styled.div`
     text-align: center;
     margin-top: 1rem;
   }
-
+  /* Mobile optimization */
   @media (max-width: 500px) {
     .card {
-      width: 90%;
-      height: auto;
+      width: 95%;
+      height: 75vh; /* Take more space on mobile */
+      min-height: 380px;
+    }
+
+    .front,
+    .back {
+      padding: 1.5rem;
+    }
+
+    .title {
+      font-size: 1.25rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  /* Larger screens get a balanced centered layout */
+  @media (min-width: 768px) {
+    .card {
+      height: 60vh; /* Balanced desktop look */
+      max-width: 460px;
     }
   }
 `;
