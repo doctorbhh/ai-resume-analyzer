@@ -4,12 +4,6 @@ import { usePuterStore } from "~/lib/puter";
 import Navbar from "~/components/Navbar";
 import Card from "~/components/Glasscard";
 
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Resanalyzer" },
-    { name: "description", content: "Smart feedback for your dream job!" },
-  ];
-}
 const WipeApp = () => {
   const [isMounted, setIsMounted] = useState(false); // state for safe rendering
 
@@ -21,7 +15,7 @@ const WipeApp = () => {
   if (!isMounted) {
     // optionally show a loading or skeleton while waiting
     return (
-      <div className="p-10">
+      <div className="p-10>
         <Navbar />
         <div className="flex items-center justify-center text-gray-500 mt-10">
           Loading...
@@ -31,12 +25,14 @@ const WipeApp = () => {
   }
 
   return (
-    <div className="p-10">
-      <Navbar />
+    <main>
       <div>
-        <Card />
+        <Navbar />
+        <div>
+          <Card />
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 
