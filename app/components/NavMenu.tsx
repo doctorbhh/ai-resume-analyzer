@@ -153,7 +153,7 @@ const StyledWrapper = styled.div`
     display: flex;
     justify-content: center;
     border-radius: 15px;
-    box-shadow: 0 10px 25px 0 rgba(#000, 0.075);
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.075);
   }
 
   .link {
@@ -164,12 +164,13 @@ const StyledWrapper = styled.div`
     height: 50px;
     border-radius: 8px;
     position: relative;
-
     overflow: hidden;
     transform-origin: center left;
     transition: width 0.2s ease-in;
     text-decoration: none;
     color: inherit;
+    min-height: 44px; /* Touch-friendly minimum height */
+
     &:before {
       position: absolute;
       z-index: -1;
@@ -196,6 +197,14 @@ const StyledWrapper = styled.div`
         opacity: 1;
       }
     }
+
+    /* Mobile active state for visual feedback */
+    @media (hover: none) and (pointer: coarse) {
+      &:active {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: scale(0.98);
+      }
+    }
   }
 
   .link-icon {
@@ -219,6 +228,86 @@ const StyledWrapper = styled.div`
     text-align: center;
     text-indent: 30px;
     width: 100%;
+    opacity: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* Desktop hover behavior */
+  @media (hover: hover) and (pointer: fine) {
+    .link:hover .link-title,
+    .link:focus .link-title {
+      opacity: 1;
+    }
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .menu {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 15px 15px 0 0;
+      justify-content: space-around;
+      padding: 0.75rem 0.5rem;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .link {
+      width: calc(25% - 0.25rem);
+      height: 48px;
+      max-width: 80px; /* Prevent overflow on very small screens */
+      flex: 1;
+      &:before {
+        display: none; /* No expanding background on mobile */
+      }
+    }
+
+    .link-icon {
+      left: auto;
+      position: relative;
+      width: 24px;
+      height: 24px;
+      margin-right: 0.25rem;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .link-title {
+      transform: translateX(0);
+      opacity: 1;
+      text-indent: 0;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  /* Extra small screens */
+  @media (max-width: 480px) {
+    .menu {
+      padding: 0.5rem 0.25rem;
+    }
+
+    .link {
+      height: 44px;
+      max-width: 70px;
+    }
+
+    .link-icon {
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    .link-title {
+      font-size: 0.7rem;
+    }
   }
 `;
 

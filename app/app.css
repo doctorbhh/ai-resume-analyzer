@@ -3,8 +3,9 @@
 @import "tw-animate-css";
 
 @theme {
-  --font-sans: "Mona Sans", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    "Mona Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   /* Changed: Updated light text color and transparent blues for dark mode */
   --color-dark-200: #d1d5db; /* Was a dark gray, now a light gray (gray-300) for secondary text */
@@ -21,39 +22,41 @@
   --color-badge-yellow-text: #fef3c7; /* Light Yellow/Amber text (amber-100) */
 }
 
-/* Changed: Set base background to black and default text to light */
+/* Changed: Set base background to black and default text to light, ensure mobile viewport scaling */
 html,
 body {
   @apply bg-gradient-to-r from-slate-900 to-slate-700 text-gray-100;
+  -webkit-text-size-adjust: 100%; /* Prevent iOS zoom on inputs */
 }
 
 main {
-  @apply min-h-screen pt-10;
+  @apply min-h-screen pt-10 max-sm:pt-4; /* Reduced top padding on mobile */
 }
+
 h1 {
-  @apply max-sm:text-[3rem] text-6xl text-gradient leading-tight xl:tracking-[-2px] font-semibold;
+  @apply max-sm:text-4xl sm:text-5xl text-6xl text-gradient leading-tight xl:tracking-[-2px] font-semibold; /* Increased mobile font size for better readability */
 }
 
 h2 {
-  @apply max-sm:text-xl text-3xl text-dark-200; /* Uses the new --color-dark-200 var */
+  @apply max-sm:text-lg sm:text-2xl text-3xl text-dark-200; /* Uses the new --color-dark-200 var, adjusted mobile size */
 }
 
 label {
   @apply text-dark-200; /* Uses the new --color-dark-200 var */
 }
 
-/* Changed: Inputs are now dark with light text and a border */
+/* Optimized: Inputs are now dark with light text and a border, with responsive padding and touch-friendly height */
 input {
-  @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-gray-900 text-white border border-gray-700;
+  @apply w-full p-3 max-sm:p-2 inset-shadow rounded-2xl focus:outline-none bg-gray-900 text-white border border-gray-700 min-h-[44px]; /* Min height for touch targets */
 }
 
-/* Changed: Textareas are now dark with light text and a border */
+/* Optimized: Textareas are now dark with light text and a border, with responsive padding and touch-friendly height */
 textarea {
-  @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-gray-900 text-white border border-gray-700;
+  @apply w-full p-3 max-sm:p-2 inset-shadow rounded-2xl focus:outline-none bg-gray-900 text-white border border-gray-700 min-h-[100px] max-sm:min-h-[80px]; /* Adjusted min height for mobile */
 }
 
 form {
-  @apply flex flex-col items-start gap-8 w-full;
+  @apply flex flex-col items-start gap-6 max-sm:gap-3 w-full; /* Further reduced gap on mobile for compactness */
 }
 
 @layer components {
@@ -63,73 +66,73 @@ form {
   }
   .gradient-border {
     /* Uses the new dark-blue theme variables */
-    @apply bg-gradient-to-b from-light-blue-100 to-light-blue-200 p-4 rounded-2xl;
+    @apply bg-gradient-to-b from-light-blue-100 to-light-blue-200 p-4 max-sm:p-2 rounded-2xl;
   }
   .primary-button {
-    @apply primary-gradient text-white rounded-full px-4 py-2 cursor-pointer w-full;
+    @apply primary-gradient text-white rounded-full px-4 py-2 cursor-pointer w-full max-sm:py-2.5 max-sm:px-6 font-medium; /* Ensured min 44px height for touch, increased padding */
+    min-height: 44px; /* Explicit touch target size */
   }
   .resume-nav {
-    /* Changed: border-gray-200 -> border-gray-800 */
-    @apply flex flex-row justify-between items-center p-4 border-b border-gray-800;
+    /* Changed: border-gray-200 -> border-gray-800, added mobile padding and stacking */
+    @apply flex flex-row justify-between items-center p-4 max-sm:p-3 border-b border-gray-800 max-sm:flex-col max-sm:gap-3 max-sm:items-stretch; /* Stretch for full width on mobile */
   }
   .resume-summary {
-    @apply flex flex-row items-center justify-center p-4 gap-4;
+    @apply flex flex-row items-center justify-center p-4 max-sm:p-3 gap-4 max-sm:flex-col max-sm:gap-3 max-sm:items-stretch;
     .category {
-      /* Changed: bg-gray-50 -> bg-gray-900 */
-      @apply flex flex-row gap-2 items-center bg-gray-900 rounded-2xl p-4 w-full justify-between;
+      /* Changed: bg-gray-50 -> bg-gray-900, added mobile adjustments */
+      @apply flex flex-row gap-2 max-sm:gap-1.5 items-center bg-gray-900 rounded-2xl p-4 max-sm:p-2 w-full justify-between max-sm:flex-col max-sm:items-stretch max-sm:justify-start;
     }
   }
   .back-button {
-    /* Changed: border-gray-200 -> border-gray-700 */
-    @apply flex flex-row items-center gap-2 border border-gray-700 rounded-lg p-2 shadow-sm;
+    /* Changed: border-gray-200 -> border-gray-700, added mobile padding and touch size */
+    @apply flex flex-row items-center gap-2 max-sm:gap-1.5 border border-gray-700 rounded-lg p-3 max-sm:p-2.5 shadow-sm min-h-[44px]; /* Touch-friendly */
   }
   .auth-button {
-    @apply primary-gradient rounded-full py-4 px-8 cursor-pointer w-[600px] max-md:w-full text-3xl font-semibold text-white;
+    @apply primary-gradient rounded-full py-4 max-sm:py-3 px-8 max-sm:px-6 cursor-pointer w-[600px] max-md:w-full text-3xl max-sm:text-2xl font-semibold text-white min-h-[56px]; /* Larger touch target, adjusted font */
   }
   .main-section {
-    @apply flex flex-col items-center gap-8 pt-12 max-sm:mx-2 mx-15 pb-5;
+    @apply flex flex-col items-center gap-8 max-sm:gap-4 pt-12 max-sm:pt-6 max-sm:mx-2 mx-15 pb-5 max-sm:pb-4;
   }
   .page-heading {
-    @apply flex flex-col items-center gap-8 max-w-4xl text-center max-sm:gap-4;
+    @apply flex flex-col items-center gap-8 max-sm:gap-4 max-w-4xl text-center max-sm:px-4; /* Added horizontal padding on mobile */
   }
   .resumes-section {
-    @apply flex flex-wrap max-md:flex-col max-md:gap-4 gap-6 items-start max-md:items-center w-full max-w-[1850px] justify-evenly;
+    @apply flex flex-wrap max-md:flex-col max-md:gap-4 gap-6 items-start max-md:items-center w-full max-w-[1850px] justify-evenly max-sm:gap-3 max-sm:justify-center; /* Centered on very small screens */
   }
 
   .resume-card {
-    /* Changed: bg-white -> bg-gray-900, added border */
-    @apply flex flex-col gap-8 h-[560px] w-[350px] lg:w-[430px] xl:w-[490px] bg-gray-900 border border-white rounded-2xl p-4;
+    /* Changed: bg-white -> bg-gray-900, added border, made responsive width/height for mobile */
+    @apply flex flex-col gap-6 max-sm:gap-3 h-[560px] max-sm:h-auto max-sm:max-h-[80vh] w-[350px] max-sm:w-full lg:w-[430px] xl:w-[490px] bg-gray-900 border border-white rounded-2xl p-4 max-sm:p-3 max-sm:overflow-y-auto; /* Scrollable on mobile if needed */
   }
 
   .resume-card-header {
-    @apply flex flex-row gap-2 justify-between min-h-[110px] max-sm:flex-col items-center max-md:justify-center max-md:items-center;
+    @apply flex flex-row gap-2 max-sm:gap-1.5 justify-between min-h-[110px] max-sm:min-h-auto max-sm:flex-col items-center max-md:justify-center max-md:items-center max-sm:gap-2;
   }
 
   .feedback-section {
-    @apply flex flex-col gap-8 w-1/2 px-8 max-lg:w-full py-6;
+    @apply flex flex-col gap-8 max-sm:gap-4 w-1/2 px-8 max-sm:px-4 max-lg:w-full py-6 max-sm:py-4 max-sm:overflow-x-hidden; /* Prevent horizontal scroll */
   }
 
   .navbar {
-    /* Changed: bg-white -> bg-gray-900, added border */
-    @apply flex flex-row justify-between items-center bg-gray-900 border border-gray-800 rounded-full p-4 w-full px-10 max-w-[1200px] mx-auto;
+    /* Changed: bg-white -> bg-gray-900, added border, responsive padding and wrapping */
+    @apply flex flex-row justify-between items-center bg-gray-900 border border-gray-800 rounded-full p-4 max-sm:p-2.5 w-full px-10 max-sm:px-4 max-w-[1200px] mx-auto max-sm:flex-wrap max-sm:gap-2; /* Allow wrapping on very small screens */
   }
 
   .score-badge {
-    /* Uses the new badge theme variables automatically */
-    @apply flex flex-row items-center justify-center py-1 px-2 gap-4 rounded-[96px];
+    @apply flex flex-row items-center justify-center py-1 px-2 gap-4 max-sm:gap-1.5 rounded-[96px] min-h-[32px]; /* Compact touch-friendly badge */
   }
 
   .form-div {
-    @apply flex flex-col gap-2 w-full items-start;
+    @apply flex flex-col gap-2 max-sm:gap-1.5 w-full items-start;
   }
 
   .uplader-drag-area {
-    /* Changed: bg-white -> bg-gray-900, added visible dropzone borders */
-    @apply relative p-8 text-center transition-all duration-700 cursor-pointer bg-gray-900 border-2 border-dashed border-gray-700 hover:border-gray-500 rounded-2xl min-h-[208px];
+    /* Changed: bg-white -> bg-gray-900, added visible dropzone borders, responsive min-height and touch */
+    @apply relative p-8 max-sm:p-4 text-center transition-all duration-700 cursor-pointer bg-gray-900 border-2 border-dashed border-gray-700 hover:border-gray-500 rounded-2xl min-h-[208px] max-sm:min-h-[150px] touch-manipulation; /* Better mobile interaction */
   }
   .uploader-selected-file {
-    /* Changed: bg-gray-50 -> bg-gray-800 */
-    @apply flex items-center justify-between p-3 bg-gray-800 rounded-2xl;
+    /* Changed: bg-gray-50 -> bg-gray-800, added mobile padding */
+    @apply flex items-center justify-between p-3 max-sm:p-2 bg-gray-800 rounded-2xl min-h-[44px]; /* Touch-friendly file row */
   }
 }
 
@@ -169,8 +172,23 @@ form {
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(10px); /* Added subtle slide for better mobile feel */
   }
   to {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 640px) {
+  .primary-button,
+  .auth-button,
+  .back-button {
+    font-size: 0.8rem; /* Ensure readable font on tiny screens */
+  }
+
+  .resume-card {
+    margin-bottom: 1rem; /* Extra spacing between stacked cards */
   }
 }

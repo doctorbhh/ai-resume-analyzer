@@ -10,7 +10,6 @@ const Card = () => {
             <div key={i} className={`part part-${i + 1}`} />
           ))}
         </div>
-
         <div className="card">
           <div className="say-hi">
             <svg
@@ -25,11 +24,9 @@ const Card = () => {
               />
             </svg>
           </div>
-
           <div className="title">
             <span>Hi, I'm Bharath 👋</span>
           </div>
-
           <div className="paragraph">
             <span>
               I’m a passionate web developer who loves crafting interactive,
@@ -39,15 +36,31 @@ const Card = () => {
           </div>
         </div>
       </div>
+      <div className="icons-container">
+        <Icon1 />
+        <Icon2 />
+        <Icon3 />
+        <Icon4 />
+      </div>
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 1rem;
+
+  .icons-container {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
 
   .card_container {
     --X: 0deg;
@@ -55,7 +68,6 @@ const StyledWrapper = styled.div`
     --Z: 0deg;
     --angleX: 15deg;
     --angleY: 20deg;
-
     cursor: pointer;
     position: relative;
     perspective: 1000px;
@@ -78,53 +90,66 @@ const StyledWrapper = styled.div`
     background-color: transparent;
   }
 
-  /* 3D Tilt Zones */
+  /* 3D Tilt Zones - Reduced angles on mobile */
   .card_container:has(.part-1:hover) {
     --X: var(--angleX);
     --Y: calc(var(--angleY) * -1);
   }
+
   .card_container:has(.part-2:hover) {
     --X: var(--angleX);
     --Y: calc((var(--angleY) / 2) * -1);
   }
+
   .card_container:has(.part-3:hover) {
     --X: var(--angleX);
   }
+
   .card_container:has(.part-4:hover) {
     --X: var(--angleX);
     --Y: calc(var(--angleY) / 2);
   }
+
   .card_container:has(.part-5:hover) {
     --X: var(--angleX);
     --Y: var(--angleY);
   }
+
   .card_container:has(.part-6:hover) {
     --Y: calc(var(--angleY) * -1);
   }
+
   .card_container:has(.part-7:hover) {
     --Y: calc((var(--angleY) / 2) * -1);
   }
+
   .card_container:has(.part-9:hover) {
     --Y: calc(var(--angleY) / 2);
   }
+
   .card_container:has(.part-10:hover) {
     --Y: var(--angleY);
   }
+
   .card_container:has(.part-11:hover) {
     --X: calc(var(--angleX) * -1);
     --Y: calc(var(--angleY) * -1);
   }
+
   .card_container:has(.part-12:hover) {
     --X: calc(var(--angleX) * -1);
     --Y: calc((var(--angleY) / 2) * -1);
   }
+
   .card_container:has(.part-13:hover) {
     --X: calc(var(--angleX) * -1);
   }
+
   .card_container:has(.part-14:hover) {
     --X: calc(var(--angleX) * -1);
     --Y: calc(var(--angleY) / 2);
   }
+
   .card_container:has(.part-15:hover) {
     --X: calc(var(--angleX) * -1);
     --Y: var(--angleY);
@@ -142,10 +167,12 @@ const StyledWrapper = styled.div`
     border-radius: 1rem;
     background: linear-gradient(135deg, #1b263b, #0d1b2a);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-
     transform-origin: center;
     transform: rotateX(var(--X)) rotateY(var(--Y)) rotateZ(var(--Z));
-    transition: transform 0.3s ease, background 0.4s ease, box-shadow 0.4s ease;
+    transition:
+      transform 0.3s ease,
+      background 0.4s ease,
+      box-shadow 0.4s ease;
   }
 
   .card_container:hover .card {
@@ -197,49 +224,134 @@ const StyledWrapper = styled.div`
     line-height: 1.5rem;
   }
 
-  .light-button button.bt {
+  /* Mobile optimizations for card */
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+
+    .card_container {
+      --angleX: 8deg; /* Reduced tilt for mobile */
+      --angleY: 10deg;
+    }
+
+    .card {
+      width: 90vw;
+      max-width: 320px;
+      height: auto;
+      min-height: 350px;
+      padding: 1.5rem;
+      gap: 1rem;
+    }
+
+    .title {
+      font-size: 1.2rem;
+    }
+
+    .paragraph {
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+    }
+
+    .icon_say-hi {
+      width: 2.5rem;
+    }
+
+    .card_container:hover .card .icon_say-hi {
+      width: 4rem;
+    }
+
+    .icons-container {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card {
+      padding: 1rem;
+      gap: 0.8rem;
+    }
+
+    .title {
+      font-size: 1.1rem;
+    }
+
+    .paragraph {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* Icon styles - base */
+  .light-button,
+  .light-button2,
+  .light-button3,
+  .light-button4 {
+    --button-size: 100px;
+    --light-height: 200px;
+  }
+
+  .light-button button.bt,
+  .light-button2 button.bt2,
+  .light-button3 button.bt3,
+  .light-button4 button.bt4 {
     position: relative;
-    height: 200px;
+    height: var(--light-height);
     display: flex;
     align-items: flex-end;
     outline: none;
     background: none;
     border: none;
     cursor: pointer;
+    min-height: 44px; /* Touch-friendly */
   }
 
-  .light-button button.bt .button-holder {
+  .light-button button.bt .button-holder,
+  .light-button2 button.bt2 .button-holder2,
+  .light-button3 button.bt3 .button-holder3,
+  .light-button4 button.bt4 .button-holder4 {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100px;
-    width: 100px;
+    height: var(--button-size);
+    width: var(--button-size);
     background-color: #0a0a0a;
     border-radius: 5px;
     color: #0f0f0f;
     font-weight: 700;
     transition: 300ms;
-    outline: #0f0f0f 2px solid;
-    outline-offset: 20;
+    outline: #00000000 2px solid;
+    outline-offset: 20px;
   }
 
-  .light-button button.bt .button-holder svg {
-    height: 50px;
+  .light-button button.bt .button-holder svg,
+  .light-button2 button.bt2 .button-holder2 svg,
+  .light-button3 button.bt3 .button-holder3 svg,
+  .light-button4 button.bt4 .button-holder4 svg {
+    height: calc(var(--button-size) / 2);
     fill: #0f0f0f;
     transition: 300ms;
+    width: auto;
   }
 
-  .light-button button.bt .light-holder {
+  .light-button button.bt .light-holder,
+  .light-button2 button.bt2 .light-holder2,
+  .light-button3 button.bt3 .light-holder3,
+  .light-button4 button.bt4 .light-holder4 {
     position: absolute;
-    height: 200px;
-    width: 100px;
+    height: var(--light-height);
+    width: var(--button-size);
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .light-button button.bt .light-holder .dot {
+  .light-button button.bt .light-holder .dot,
+  .light-button2 button.bt2 .light-holder2 .dot2,
+  .light-button3 button.bt3 .light-holder3 .dot3,
+  .light-button4 button.bt4 .light-holder4 .dot4 {
     position: absolute;
     top: 0;
     width: 10px;
@@ -249,11 +361,14 @@ const StyledWrapper = styled.div`
     z-index: 2;
   }
 
-  .light-button button.bt .light-holder .light {
+  .light-button button.bt .light-holder .light,
+  .light-button2 button.bt2 .light-holder2 .light2,
+  .light-button3 button.bt3 .light-holder3 .light3,
+  .light-button4 button.bt4 .light-holder4 .light4 {
     position: absolute;
     top: 0;
-    width: 200px;
-    height: 200px;
+    width: calc(var(--light-height) * 0.5);
+    height: var(--light-height);
     clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
     background: transparent;
   }
@@ -279,68 +394,6 @@ const StyledWrapper = styled.div`
   }
 
   /*Icon2*/
-
-  .light-button2 button.bt2 {
-    position: relative;
-    height: 200px;
-    display: flex;
-    align-items: flex-end;
-    outline: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .light-button2 button.bt2 .button-holder2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    width: 100px;
-    background-color: #0a0a0a;
-    border-radius: 5px;
-    color: transparent;
-    font-weight: 700;
-    transition: 300ms;
-    outline: #0f0f0f 2px solid;
-    outline-offset: 20;
-  }
-
-  .light-button2 button.bt2 .button-holder2 svg {
-    height: 50px;
-    fill: #0f0f0f;
-    transition: 300ms;
-  }
-
-  .light-button2 button.bt2 .light-holder2 {
-    position: absolute;
-    height: 200px;
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .light-button2 button.bt2 .light-holder2 .dot2 {
-    position: absolute;
-    top: 0;
-    width: 10px;
-    height: 10px;
-    background-color: #0a0a0a;
-    border-radius: 10px;
-    z-index: 2;
-  }
-
-  .light-button2 button.bt2 .light-holder2 .light2 {
-    position: absolute;
-    top: 0;
-    width: 200px;
-    height: 200px;
-    clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
-    background: transparent;
-  }
-
   .light-button2 button.bt2:hover .button-holder2 svg {
     fill: rgba(10, 102, 194, 1);
   }
@@ -363,68 +416,13 @@ const StyledWrapper = styled.div`
 
   /*Icon3*/
   .light-button3 button.bt3 {
-    position: relative;
-    height: 200px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center; /* Added to center the button-holder */
-    width: 100px; /* Added explicit width */
-    outline: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .light-button3 button.bt3 .button-holder3 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 100px;
-    width: 100px;
-    background-color: #0a0a0a;
-    border-radius: 5px;
-    color: #0f0f0f;
-    font-weight: 700;
-    transition: 300ms;
-    outline: #0f0f0f 2px solid;
-    outline-offset: 20;
-  }
-
-  .light-button3 button.bt3 .button-holder3 svg {
-    height: 50px;
-    fill: #0f0f0f;
-    transition: 300ms;
-  }
-
-  .light-button3 button.bt3 .light-holder3 {
-    position: absolute;
-    height: 200px;
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: var(--button-size);
   }
 
   .light-button3 button.bt3 .light-holder3 .dot3 {
-    position: absolute;
-    top: 0;
-    width: 10px;
-    height: 10px;
-    background-color: #0a0a0a;
-    border-radius: 10px;
-    z-index: 2;
-    left: 50%; /* Added to center the dot */
-    transform: translateX(-50%); /* Added to center the dot */
-  }
-
-  .light-button3 button.bt3 .light-holder3 .light3 {
-    position: absolute;
-    top: 0;
-    width: 200px;
-    height: 200px;
-    clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
-    background: transparent;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .light-button3 button.bt3:hover .button-holder3 svg {
@@ -448,67 +446,6 @@ const StyledWrapper = styled.div`
   }
 
   /*Icon4*/
-
-  .light-button4 button.bt4 {
-    position: relative;
-    height: 200px;
-    display: flex;
-    align-items: flex-end;
-    outline: none;
-    background: none;
-    border: none;
-  }
-
-  .light-button4 button.bt4 .button-holder4 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    width: 100px;
-    background-color: #0a0a0a;
-    border-radius: 5px;
-    color: #0f0f0f;
-    font-weight: 700;
-    transition: 300ms;
-    outline: #0f0f0f 2px solid;
-    outline-offset: 20;
-  }
-
-  .light-button4 button.bt4 .button-holder4 svg {
-    height: 50px;
-    fill: #0f0f0f;
-    transition: 300ms;
-  }
-
-  .light-button4 button.bt4 .light-holder4 {
-    position: absolute;
-    height: 200px;
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .light-button4 button.bt4 .light-holder4 .dot4 {
-    position: absolute;
-    top: 0;
-    width: 10px;
-    height: 10px;
-    background-color: #0a0a0a;
-    border-radius: 10px;
-    z-index: 2;
-  }
-
-  .light-button4 button.bt4 .light-holder4 .light4 {
-    position: absolute;
-    top: 0;
-    width: 200px;
-    height: 200px;
-    clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
-    background: transparent;
-  }
-
   .light-button4 button.bt4:hover .button-holder4 svg {
     fill: rgba(233, 57, 26);
   }
@@ -528,14 +465,49 @@ const StyledWrapper = styled.div`
       rgba(200, 20, 100, 0) 100%
     );
   }
+
+  /* Mobile optimizations for icons */
+  @media (max-width: 768px) {
+    .light-button,
+    .light-button2,
+    .light-button3,
+    .light-button4 {
+      --button-size: 80px;
+      --light-height: 160px;
+    }
+
+    .light-button button.bt .button-holder svg,
+    .light-button2 button.bt2 .button-holder2 svg,
+    .light-button3 button.bt3 .button-holder3 svg,
+    .light-button4 button.bt4 .button-holder4 svg {
+      height: calc(var(--button-size) / 2.2);
+    }
+
+    .light-button button.bt .light-holder .light,
+    .light-button2 button.bt2 .light-holder2 .light2,
+    .light-button3 button.bt3 .light-holder3 .light3,
+    .light-button4 button.bt4 .light-holder4 .light4 {
+      width: calc(var(--light-height) * 0.4);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .light-button,
+    .light-button2,
+    .light-button3,
+    .light-button4 {
+      --button-size: 70px;
+      --light-height: 140px;
+    }
+  }
 `;
 
 export default Card;
 
 export const Icon1 = () => {
   return (
-    <StyledWrapper>
-      <div className="light-button">
+    <div className="light-button">
+      <a href="https://discord.com">
         <button className="bt">
           <div className="light-holder">
             <div className="dot" />
@@ -552,15 +524,15 @@ export const Icon1 = () => {
             <p>Discord</p>
           </div>
         </button>
-      </div>
-    </StyledWrapper>
+      </a>
+    </div>
   );
 };
 
 export const Icon2 = () => {
   return (
-    <StyledWrapper>
-      <div className="light-button2">
+    <div className="light-button2">
+      <a href="https://linkedin.com">
         <button className="bt2">
           <div className="light-holder2">
             <div className="dot2" />
@@ -573,15 +545,15 @@ export const Icon2 = () => {
             <p>linkedin</p>
           </div>
         </button>
-      </div>
-    </StyledWrapper>
+      </a>
+    </div>
   );
 };
 
 export const Icon3 = () => {
   return (
-    <StyledWrapper>
-      <div className="light-button3">
+    <div className="light-button3">
+      <a href="https://github.com">
         <button className="bt3">
           <div className="light-holder3">
             <div className="dot3" />
@@ -598,15 +570,15 @@ export const Icon3 = () => {
             <p>GitHub</p>
           </div>
         </button>
-      </div>
-    </StyledWrapper>
+      </a>
+    </div>
   );
 };
 
 export const Icon4 = () => {
   return (
-    <StyledWrapper>
-      <div className="light-button4">
+    <div className="light-button4">
+      <a href="https://reddit.com">
         <button className="bt4">
           <div className="light-holder4">
             <div className="dot4" />
@@ -627,7 +599,7 @@ export const Icon4 = () => {
             <p>reddit</p>
           </div>
         </button>
-      </div>
-    </StyledWrapper>
+      </a>
+    </div>
   );
 };

@@ -15,22 +15,24 @@ const WipeApp = () => {
   if (!isMounted) {
     // optionally show a loading or skeleton while waiting
     return (
-      <div className="p-10">
+      <main>
         <Navbar />
         <div className="flex items-center justify-center text-gray-500 mt-10">
           Loading...
         </div>
-      </div>
+      </main>
     );
   }
 
   return (
-    <div className="p-10">
-      <Navbar />
+    <main>
       <div>
-        <Card />
+        <Navbar />
+        <div>
+          <Card />
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 
