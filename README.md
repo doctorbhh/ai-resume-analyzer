@@ -1,87 +1,73 @@
-# Welcome to React Router!
+# AI Resume Analyzer &nbsp; <img src="https://img.icons8.com/color/48/000000/artificial-intelligence.png" height="32" alt="AI Icon"> <img src="https://img.icons8.com/color/48/000000/resume.png" height="32" alt="Resume Icon">
 
-A modern, production-ready template for building full-stack React applications using React Router.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
-
-## Features
-
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-
-## Getting Started
-
-### Installation
-
-Install the dependencies:
-
-```bash
-npm install
-```
-
-### Development
-
-Start the development server with HMR:
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
 
 ---
 
-Built with ❤️ using React Router.
+## 🚀 Overview
+
+**AI Resume Analyzer** is a cutting-edge web application that leverages Artificial Intelligence to provide insightful analysis of resumes. Designed to assist job seekers and HR professionals, it delivers feedback, skill extraction, and improvement tips for resume optimization.
+
+---
+
+## 📦 Features
+
+- <img src="https://img.icons8.com/color/48/000000/mind-map.png" height="24" alt="AI Analysis"> **AI-Powered Resume Parsing**
+- <img src="https://img.icons8.com/color/48/000000/checklist.png" height="24" alt="Checklist"> **Skill Extraction & Suggestions**
+- <img src="https://img.icons8.com/color/48/000000/idea.png" height="24" alt="Tips"> **Actionable Improvement Tips**
+- <img src="https://img.icons8.com/color/48/000000/online-support.png" height="24" alt="Support"> **User-Friendly Interface**
+- <img src="https://img.icons8.com/color/48/000000/data-configuration.png" height="24" alt="Customization"> **Customizable Analysis Parameters**
+
+---
+
+## 🛠️ Technology Stack
+
+| Language      | Percentage |
+|---------------|------------|
+| ![JavaScript](https://img.icons8.com/color/48/000000/javascript.png) JavaScript | 89.1%      |
+| ![TypeScript](https://img.icons8.com/color/48/000000/typescript.png) TypeScript | 10.3%      |
+| ![Other](https://img.icons8.com/color/48/000000/code.png) Other               | 0.6%       |
+
+---
+
+## 📄 Getting Started
+
+1. **Clone the repository**
+    ```bash
+    git clone https://github.com/doctorbhh/ai-resume-analyzer.git
+    cd ai-resume-analyzer
+    ```
+
+2. **Install dependencies**
+    ```bash
+    npm install
+    ```
+
+3. **Run the development server**
+    ```bash
+    npm start
+    ```
+
+4. **Open your browser**
+    - Navigate to `http://localhost:3000`
+
+---
+
+## 💡 Usage
+
+Upload your resume in PDF or DOCX format. The AI will automatically analyze your resume and provide suggestions and insights within seconds.
+
+---
+
+
+
+## 📬 Contact
+
+For support or business inquiries:
+
+- Email: doctorbhh@example.com
+- GitHub: [@doctorbhh](https://github.com/doctorbhh)
+
+---
+![ai-resume-analyzer-development](https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif)
+> Made with ❤️ by doctorbhh
