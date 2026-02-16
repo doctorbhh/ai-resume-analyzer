@@ -63,9 +63,9 @@ Upload your resume in PDF or DOCX format. The AI will automatically analyze your
 
 ## 📬 Contact
 
-For support or business inquiries:
+For inquiries:
 
-- Email: doctorbhh@example.com
+
 - GitHub: [@doctorbhh](https://github.com/doctorbhh)
 
 ---
