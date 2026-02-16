@@ -12,7 +12,6 @@ export const meta = () => [
 const AboutUs = () => {
   const [isClient, setIsClient] = useState(false);
 
-  // ✅ Prevent SSR hydration mismatch
   useEffect(() => {
     setIsClient(true);
   }, []);

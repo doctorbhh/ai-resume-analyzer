@@ -169,7 +169,7 @@ const StyledWrapper = styled.div`
     transition: width 0.2s ease-in;
     text-decoration: none;
     color: inherit;
-    min-height: 44px; /* Touch-friendly minimum height */
+    min-height: 44px; 
 
     &:before {
       position: absolute;
@@ -198,7 +198,6 @@ const StyledWrapper = styled.div`
       }
     }
 
-    /* Mobile active state for visual feedback */
     @media (hover: none) and (pointer: coarse) {
       &:active {
         background-color: rgba(255, 255, 255, 0.1);
@@ -233,7 +232,6 @@ const StyledWrapper = styled.div`
     font-weight: 500;
   }
 
-  /* Desktop hover behavior */
   @media (hover: hover) and (pointer: fine) {
     .link:hover .link-title,
     .link:focus .link-title {
@@ -241,7 +239,6 @@ const StyledWrapper = styled.div`
     }
   }
 
-  /* Mobile optimizations */
   @media (max-width: 768px) {
     .menu {
       position: fixed;
@@ -257,10 +254,10 @@ const StyledWrapper = styled.div`
     .link {
       width: calc(25% - 0.25rem);
       height: 48px;
-      max-width: 80px; /* Prevent overflow on very small screens */
+      max-width: 80px; 
       flex: 1;
       &:before {
-        display: none; /* No expanding background on mobile */
+        display: none; 
       }
     }
 
@@ -287,7 +284,6 @@ const StyledWrapper = styled.div`
     }
   }
 
-  /* Extra small screens */
   @media (max-width: 480px) {
     .menu {
       padding: 0.5rem 0.25rem;

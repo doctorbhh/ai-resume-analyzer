@@ -183,45 +183,45 @@ export const resumes: Resume[] = [
 
 export const AIResponseFormat = `
       interface Feedback {
-      overallScore: number; //max 100
+      overallScore: number; 
       ATS: {
-        score: number; //rate based on ATS suitability
+        score: number; 
         tips: {
           type: "good" | "improve";
-          tip: string; //give 3-4 tips
+          tip: string; 
         }[];
       };
       toneAndStyle: {
-        score: number; //max 100
+        score: number; 
         tips: {
           type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
+          tip: string; 
+          explanation: string; 
+        }[]; 
       };
       content: {
-        score: number; //max 100
+        score: number; 
         tips: {
           type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
+          tip: string; 
+          explanation: string; 
+        }[]; 
       };
       structure: {
-        score: number; //max 100
+        score: number; 
         tips: {
           type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
+          tip: string; 
+          explanation: string; 
+        }[]; 
       };
       skills: {
-        score: number; //max 100
+        score: number; 
         tips: {
           type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
+          tip: string; 
+          explanation: string; 
+        }[]; 
       };
     }`;
 

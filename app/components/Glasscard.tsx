@@ -87,11 +87,11 @@ const StyledWrapper = styled.div`
   .card {
     width: 90%;
     max-width: 420px;
-    height: 70vh; /* Dynamically fills most of the viewport */
-    min-height: 360px; /* Ensures good content space on small screens */
+    height: 70vh; 
+    min-height: 360px; 
     max-height: 600px;
     perspective: 1000px;
-    margin: 1rem auto; /* Centered on mobile screens */
+    margin: 1rem auto; 
   }
 
   .content {
@@ -204,11 +204,11 @@ const StyledWrapper = styled.div`
     text-align: center;
     margin-top: 1rem;
   }
-  /* Mobile optimization */
+  
   @media (max-width: 500px) {
     .card {
       width: 95%;
-      height: 75vh; /* Take more space on mobile */
+      height: 75vh; 
       min-height: 380px;
     }
 
@@ -226,10 +226,9 @@ const StyledWrapper = styled.div`
     }
   }
 
-  /* Larger screens get a balanced centered layout */
   @media (min-width: 768px) {
     .card {
-      height: 60vh; /* Balanced desktop look */
+      height: 60vh; 
       max-width: 460px;
     }
   }

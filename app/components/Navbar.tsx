@@ -2,10 +2,9 @@ import { Link } from "react-router";
 import Radio from "./NavMenu";
 import { useState, useEffect } from "react";
 const Navbar = () => {
-  const [isMounted, setIsMounted] = useState(false); // state for safe rendering
+  const [isMounted, setIsMounted] = useState(false); 
 
   useEffect(() => {
-    // wait until client hydration completes
     setIsMounted(true);
   }, []);
 

@@ -1,20 +1,16 @@
-// ~/components/Button.tsx
 import React from "react";
 
-// 1. Define the props type to accept all standard button attributes
 type ButtonProps = React.ComponentPropsWithoutRef<"button">;
 
 const Button: React.FC<ButtonProps> = ({ className, ...props }) => {
-  // 2. Combine the component's default styles with any extra classes
   const combinedClassName = [
     "group relative flex h-14 w-14 flex-col items-center justify-center overflow-hidden rounded-xl border-2 border-red-800 bg-red-400 hover:bg-red-600",
-    className, // This lets you add more classes from where you use it
+    className, 
   ]
     .filter(Boolean)
     .join(" ");
 
   return (
-    // 3. Pass the combined className and all other props (like onClick)
     <button className={combinedClassName} {...props}>
       <svg
         viewBox="0 0 1.625 1.625"

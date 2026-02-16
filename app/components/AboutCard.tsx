@@ -90,7 +90,6 @@ const StyledWrapper = styled.div`
     background-color: transparent;
   }
 
-  /* 3D Tilt Zones - Reduced angles on mobile */
   .card_container:has(.part-1:hover) {
     --X: var(--angleX);
     --Y: calc(var(--angleY) * -1);
@@ -155,7 +154,6 @@ const StyledWrapper = styled.div`
     --Y: var(--angleY);
   }
 
-  /* CARD STYLE */
   .card {
     position: relative;
     display: flex;
@@ -224,12 +222,11 @@ const StyledWrapper = styled.div`
     line-height: 1.5rem;
   }
 
-  /* Mobile optimizations for card */
   @media (max-width: 768px) {
     padding: 0.5rem;
 
     .card_container {
-      --angleX: 8deg; /* Reduced tilt for mobile */
+      --angleX: 8deg; 
       --angleY: 10deg;
     }
 
@@ -283,7 +280,6 @@ const StyledWrapper = styled.div`
     }
   }
 
-  /* Icon styles - base */
   .light-button,
   .light-button2,
   .light-button3,
@@ -304,7 +300,7 @@ const StyledWrapper = styled.div`
     background: none;
     border: none;
     cursor: pointer;
-    min-height: 44px; /* Touch-friendly */
+    min-height: 44px; 
   }
 
   .light-button button.bt .button-holder,
@@ -393,7 +389,6 @@ const StyledWrapper = styled.div`
     );
   }
 
-  /*Icon2*/
   .light-button2 button.bt2:hover .button-holder2 svg {
     fill: rgba(10, 102, 194, 1);
   }
@@ -414,7 +409,6 @@ const StyledWrapper = styled.div`
     );
   }
 
-  /*Icon3*/
   .light-button3 button.bt3 {
     justify-content: center;
     width: var(--button-size);
@@ -445,7 +439,6 @@ const StyledWrapper = styled.div`
     );
   }
 
-  /*Icon4*/
   .light-button4 button.bt4:hover .button-holder4 svg {
     fill: rgba(233, 57, 26);
   }
@@ -466,7 +459,6 @@ const StyledWrapper = styled.div`
     );
   }
 
-  /* Mobile optimizations for icons */
   @media (max-width: 768px) {
     .light-button,
     .light-button2,

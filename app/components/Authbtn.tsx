@@ -49,7 +49,6 @@ const StyledWrapper = styled.div`
   }
 
   .button:hover .svgIcon {
-    /* width: 20px; */
     transition-duration: 0.3s;
     transform: translateY(-200%);
   }
@@ -59,7 +58,6 @@ const StyledWrapper = styled.div`
     bottom: -20px;
     content: "Back to Home";
     color: white;
-    /* transition-duration: .3s; */
     font-size: 0px;
   }
 
@@ -67,7 +65,6 @@ const StyledWrapper = styled.div`
     font-size: 13px;
     opacity: 1;
     bottom: unset;
-    /* transform: translateY(-30px); */
     transition-duration: 0.3s;
   }
 `;

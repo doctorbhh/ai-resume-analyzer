@@ -1,10 +1,15 @@
 import React from "react";
 
-const Button = () => {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children?: React.ReactNode;
+}
+
+const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
   return (
     <button
       className="bg-gray-300 text-center w-48 rounded-xl h-11 relative text-black text-l font-semibold group"
       type="button"
+      {...props}
     >
       <div className="bg-gray-700 rounded-xl h-10 w-1/4 flex items-center justify-center absolute left-1 top-[1.5px] group-hover:w-[184px] z-10 duration-500">
         <svg
@@ -23,7 +28,7 @@ const Button = () => {
           />
         </svg>
       </div>
-      <p className="translate-x-2">Go Back</p>
+      <p className="translate-x-2">{children || "Go Back"}</p>
     </button>
   );
 };

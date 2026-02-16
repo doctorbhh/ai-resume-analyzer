@@ -10,15 +10,13 @@ export const meta = () => [
 ];
 
 const WipeApp = () => {
-  const [isMounted, setIsMounted] = useState(false); // state for safe rendering
+  const [isMounted, setIsMounted] = useState(false); 
 
   useEffect(() => {
-    // wait until client hydration completes
     setIsMounted(true);
   }, []);
 
   if (!isMounted) {
-    // optionally show a loading or skeleton while waiting
     return (
       <main>
         <Navbar />
